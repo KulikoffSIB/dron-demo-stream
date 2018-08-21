@@ -2,18 +2,38 @@
     <div class="start-border">
         <div class="horiz-crop"></div>
         <div class="vert-crop"></div>
-        <div class="btn-start">
-            СТАРТ
-        </div>
-        <a target="_blank" href="https://metanit.com/" class="start-stream">
-            Начать показ
-        </a>
+        <template v-if="!run">
+            <div class="btn-start" @click="start()">
+                СТАРТ
+            </div>
+            <a target="_blank" href="#" class="start-stream" @click="start($event)">
+                Начать показ
+            </a>
+        </template>
     </div>
 </template>
 
 <script>
     export default {
-        name: "start"
+        name: "start",
+        data: function () {
+            return {
+                run: false
+            }
+        },
+        methods: {
+            start(event) {
+                if (event) event.preventDefault();
+
+                this.run = !this.run;
+                this.$emit('startDemo', this.run);
+
+                setTimeout(() => {
+                    this.run = !this.run;
+                    this.$emit('startDemo', this.run);
+                }, 3000)
+            }
+        }
     }
 </script>
 

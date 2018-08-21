@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <div class="flex-container-row flex-align-vert-center">
-            <div class="flex-element-1">
+            <div class="flex-element-1" v-if="!run">
                 <div class="logo-wrap">
                     <div class="logo rosneft">
                         <img src="../src/assets/RN.png" alt="ROSNEFT">
@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="flex-element-1">
-                <start></start>
+                <start @startDemo="startDemo"></start>
             </div>
         </div>
     </div>
@@ -23,7 +23,20 @@
 
     export default {
         name: 'App',
-        components: {Start}
+        components: {Start},
+        data: function () {
+            return {
+                run: false
+            }
+        },
+        methods: {
+            startDemo: function (run) {
+                this.run = run;
+            }
+        },
+        computed: {
+
+        }
     }
 </script>
 
