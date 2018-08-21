@@ -1,7 +1,7 @@
 <template>
-    <div class="start-border">
-        <div class="horiz-crop"></div>
-        <div class="vert-crop"></div>
+    <div v-bind:class="[run ? 'start-border-lg': 'start-border']">
+        <div v-bind:class="[run ? 'horiz-crop-lg': 'horiz-crop']"></div>
+        <div v-bind:class="[run ? 'vert-crop-lg': 'vert-crop']"></div>
         <template v-if="!run">
             <div class="btn-start" @click="start()">
                 СТАРТ
@@ -31,7 +31,7 @@
                 setTimeout(() => {
                     this.run = !this.run;
                     this.$emit('startDemo', this.run);
-                }, 3000)
+                }, 4000)
             }
         }
     }
@@ -43,12 +43,22 @@
         height: 600px;
         width: 840px;
         border: 5px solid #FFD100;
+        transition: all 1s ease;
 
+    }
+
+    .start-border-lg {
+        position: relative;
+        height: 800px;
+        width: 1420px;
+        border: 8px solid #FFD100;
+        transition: all 1s ease;
     }
 
     .horiz-crop, .vert-crop {
         position: absolute;
         background-color: #031323;
+        transition: all 1s ease;
     }
 
     .horiz-crop {
@@ -63,6 +73,26 @@
         left: 100px;
         height: 610px;
         width: 640px;
+    }
+
+    .horiz-crop-lg, .vert-crop-lg {
+        position: absolute;
+        background-color: #031323;
+        transition: all 1s ease;
+    }
+
+    .horiz-crop-lg {
+        top: 100px;
+        left: -8px;
+        height: 600px;
+        width: 1436px;
+    }
+
+    .vert-crop-lg {
+        top: -8px;
+        left: 100px;
+        height: 816px;
+        width: 1220px;
     }
 
     .btn-start {

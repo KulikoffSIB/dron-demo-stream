@@ -1,6 +1,9 @@
 <template>
     <div id="app">
         <div class="flex-container-row flex-align-vert-center">
+            <div class="flex-element-1">
+                <start @startDemo="startDemo"></start>
+            </div>
             <div class="flex-element-1" v-if="!run">
                 <div class="logo-wrap">
                     <div class="logo rosneft">
@@ -11,8 +14,8 @@
                     </div>
                 </div>
             </div>
-            <div class="flex-element-1">
-                <start @startDemo="startDemo"></start>
+            <div class="flex-element-1" v-if="run">
+                <person></person>
             </div>
         </div>
     </div>
@@ -20,10 +23,11 @@
 
 <script>
     import Start from "./components/start";
+    import Person from "./components/person";
 
     export default {
         name: 'App',
-        components: {Start},
+        components: {Person, Start},
         data: function () {
             return {
                 run: false
@@ -34,9 +38,7 @@
                 this.run = run;
             }
         },
-        computed: {
-
-        }
+        computed: {}
     }
 </script>
 
