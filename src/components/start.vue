@@ -31,7 +31,7 @@
                 setTimeout(() => {
                     this.run = !this.run;
                     this.$emit('startDemo', this.run);
-                }, 40000)
+                }, 20000)
             }
         }
     }

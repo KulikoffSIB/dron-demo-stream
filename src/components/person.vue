@@ -62,17 +62,35 @@
         data: function () {
             return {
                 inHelmet: null,
-                name: 'Андрей',
-                lastname: 'Петровский',
-                midname: 'Игоревич',
-                company: 'Роснефть',
-                post: 'Менеджер'
+                name: 'Нет данных',
+                lastname: 'Нет данных',
+                midname: 'Нет данных',
+                company: 'Нет данных',
+                post: 'Нет данных',
+                socket: null,
+                stompClient: null
             }
         },
         created() {
-            /*setTimeout(()=>{
-                this.inHelmet = false;
-            }, 2000)*/
+            this.socket = new SockJS('http://localhost:9000/stomp');
+            this.stompClient = Stomp.over(this.socket);
+
+            this.stompClient.connect({}, () => {
+                this.stompClient.subscribe('/topic/message', (data)=>{
+                    let personData = JSON.parse(data.body);
+
+                    this.name = personData.name;
+                    this.lastname = personData.lastname;
+                    this.midname = personData.midname;
+                    this.company = personData.company;
+                    this.post = personData.post;
+                    this.inHelmet = personData.inHelmet;
+                })
+            })
+        },
+        destroyed() {
+            this.stompClient.unsubscribe();
+            this.stompClient.disconnect();
         }
     }
 </script>
