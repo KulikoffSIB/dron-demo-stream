@@ -1,9 +1,7 @@
 <template>
     <div id="app">
         <div class="flex-container-row flex-align-vert-center">
-            <div class="flex-element-1">
-                <start @startDemo="startDemo"></start>
-            </div>
+
             <div class="flex-element-1" v-if="!run">
                 <div class="logo-wrap">
                     <div class="logo rosneft">
@@ -14,7 +12,10 @@
                     </div>
                 </div>
             </div>
-            <div class="flex-element-1" v-if="run">
+            <div class="flex-element-1">
+                <start @startDemo="startDemo"></start>
+            </div>
+            <div class="flex-element-1" v-if="run" style="align-self: center;">
                 <person></person>
             </div>
         </div>

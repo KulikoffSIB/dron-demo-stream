@@ -15,6 +15,9 @@ html, body {
     width: 100%;
 }
 
+div {
+    font-family: 'Bender', sans-serif;
+}
 .flex-container-row {
     display: flex;
     flex-direction: row;
