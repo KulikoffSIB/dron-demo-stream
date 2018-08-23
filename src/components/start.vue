@@ -25,6 +25,12 @@
             start(event) {
                 if (event) event.preventDefault();
 
+                window.fetch('http://clever:7777/start', {
+                    method: 'get'
+                }).then(res => {
+                    console.log(res);
+                });
+
                 this.run = !this.run;
                 this.$emit('startDemo', this.run);
 
