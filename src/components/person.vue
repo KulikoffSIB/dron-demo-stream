@@ -35,11 +35,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex-element-1 event">
+                <div v-bind:class="['flex-element-1', 'event', {ok: inHelmet != null && inHelmet}, {warning: inHelmet != null && !inHelmet}]">
                     <span v-if="inHelmet == null">Проверка наличия каски...</span>
-                    <div v-if="inHelmet != null">
-                        <div v-if="inHelmet">В каске</div>
-                        <div v-else>Без каски</div>
+                    <div v-else>
+                        <div class="helmet-status" v-if="inHelmet">В каске</div>
+                        <div class="helmet-status" v-else>Без каски</div>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
             this.stompClient = Stomp.over(this.socket);
 
             this.stompClient.connect({}, () => {
-                this.stompClient.subscribe('/topic/message', (data)=>{
+                this.stompClient.subscribe('/topic/message', (data) => {
                     let personData = JSON.parse(data.body);
 
                     this.name = personData.name;
@@ -121,6 +121,14 @@
         height: 160px
     }
 
+    .ok {
+        background-color: green;
+    }
+
+    .warning {
+        background-color: red;
+    }
+
     .border-warning {
         border-color: #cd0000;
     }
@@ -149,12 +157,15 @@
     .user-data {
         border-top: 1px solid #57A1D0;
     }
+    .helmet-status, .event {
+        text-align: center;
+        font-size: 40px;
+        padding-top: 20px;
+        font-family: 'Bender-Bold', sans-serif;
+    }
 
     .event {
         border-top: 1px solid #57A1D0;
-        text-align: center;
-        font-size: 30px;
-        line-height: 110px;
-        font-family: 'Bender-Bold', sans-serif;
+        padding-top: 0;
     }
 </style>
