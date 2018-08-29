@@ -8,7 +8,7 @@
                             <img src="" alt="" ref="photo">
                         </div>
                         <div class="flex-element-1">
-                            <div class="flex-container-column" style="height: 100%">
+                            <div class="flex-container-column">
                                 <div class="flex-element-1 fio">
                                     <span class="key">Фамилия</span> <br>
                                     <span class="value">{{lastName}}</span>
@@ -107,7 +107,6 @@
     .person-wrap {
         margin-left: 40px;
         width: 400px;
-        height: 512px;
         border: 1px solid #57A1D0;
         border-top: 4px solid #57A1D0;
         background-color: #0D2C49;
@@ -116,7 +115,7 @@
     .logo-wrap {
         height: 200px;
         margin-left: 40px;
-        margin-top: 100px;
+        margin-top: 268px;
         margin-right: 40px;
     }
 
