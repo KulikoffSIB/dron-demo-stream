@@ -4,12 +4,14 @@
             <div class="flex-container-column" style="height: 100%">
                 <div class="flex-element-3 photo">
                     <div class="flex-container-row">
-                        <div class="flex-element-1">PHOTO</div>
+                        <div class="flex-element-1">
+                            <img src="" alt="" ref="photo">
+                        </div>
                         <div class="flex-element-1">
                             <div class="flex-container-column" style="height: 100%">
                                 <div class="flex-element-1 fio">
                                     <span class="key">Фамилия</span> <br>
-                                    <span class="value">{{lastname}}</span>
+                                    <span class="value">{{lastName}}</span>
                                 </div>
                                 <div class="flex-element-1 fio">
                                     <span class="key">Имя</span> <br>
@@ -17,7 +19,7 @@
                                 </div>
                                 <div class="flex-element-1 fio">
                                     <span class="key">Отчество</span> <br>
-                                    <span class="value">{{midname}}</span>
+                                    <span class="value">{{midName}}</span>
                                 </div>
                             </div>
                         </div>
@@ -63,8 +65,8 @@
             return {
                 inHelmet: null,
                 name: 'Нет данных',
-                lastname: 'Нет данных',
-                midname: 'Нет данных',
+                lastName: 'Нет данных',
+                midName: 'Нет данных',
                 company: 'Нет данных',
                 post: 'Нет данных',
                 socket: null,
@@ -78,13 +80,15 @@
             this.stompClient.connect({}, () => {
                 this.stompClient.subscribe('/topic/message', (data) => {
                     let personData = JSON.parse(data.body);
+                    let userData = JSON.parse(personData.userData);
 
-                    this.name = personData.name;
-                    this.lastname = personData.lastname;
-                    this.midname = personData.midname;
-                    this.company = personData.company;
-                    this.post = personData.post;
                     this.inHelmet = personData.inHelmet;
+                    this.name = userData.name;
+                    this.lastName = userData.lastName;
+                    this.midName = userData.midName;
+                    this.company = userData.company;
+                    this.post = userData.post;
+                    this.$refs.photo.src = userData.imgURL;
                 })
             })
         },
@@ -97,9 +101,7 @@
 
 <style scoped>
     img {
-        height: auto;
-        width: 140px;
-
+        width: 100%;
     }
 
     .person-wrap {
