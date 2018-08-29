@@ -2,7 +2,7 @@
     <div>
         <div class="person-wrap">
             <div class="flex-container-column" style="height: 100%">
-                <div class="flex-element-3 photo">
+                <div class="flex-element-3">
                     <div class="flex-container-row">
                         <div class="flex-element-1">
                             <img src="" alt="" ref="photo">
@@ -37,13 +37,13 @@
                         </div>
                     </div>
                 </div>
-                <div v-bind:class="['flex-element-1', 'event', {ok: inHelmet != null && inHelmet}, {warning: inHelmet != null && !inHelmet}]">
+                <!--<div v-bind:class="['flex-element-1', 'event', {ok: inHelmet != null && inHelmet}, {warning: inHelmet != null && !inHelmet}]">
                     <span v-if="inHelmet == null">Проверка наличия каски...</span>
                     <div v-else>
                         <div class="helmet-status" v-if="inHelmet">В каске</div>
                         <div class="helmet-status" v-else>Без каски</div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
         <div class="logo-wrap">
@@ -82,7 +82,7 @@
                     let personData = JSON.parse(data.body);
                     let userData = JSON.parse(personData.userData);
 
-                    this.inHelmet = personData.inHelmet;
+                    // this.inHelmet = personData.inHelmet;
                     this.name = userData.name;
                     this.lastName = userData.lastName;
                     this.midName = userData.midName;
@@ -115,8 +115,9 @@
 
     .logo-wrap {
         height: 200px;
-        margin-left: 70px;
+        margin-left: 40px;
         margin-top: 100px;
+        margin-right: 40px;
     }
 
     .logo {
@@ -151,9 +152,6 @@
         color: #FFD100;
         font-size: 20px;
         font-family: 'Bender-Bold', sans-serif;
-    }
-
-    .photo {
     }
 
     .user-data {
