@@ -3,7 +3,7 @@
         <div v-bind:class="[run ? 'horiz-crop-lg': 'horiz-crop']"></div>
         <div v-bind:class="[run ? 'vert-crop-lg': 'vert-crop']"></div>
         <div class="video-stream" v-if="run">
-            <iframe src="http://127.0.0.1:8086/cam.mjpg" frameborder="0"></iframe>
+            <!--<iframe src="http://127.0.0.1:8086/cam.mjpg" frameborder="0"></iframe>-->
         </div>
         <template v-if="!run">
             <div class="btn-start" @click="start()">
@@ -52,22 +52,19 @@
         height: 600px;
         width: 840px;
         border: 5px solid #FFD100;
-        transition: all 1s ease;
-
     }
 
     .start-border-lg {
         position: relative;
         height: 800px;
-        width: 1420px;
+        width: 1066px;
         border: 8px solid #FFD100;
-        transition: all 1s ease;
+        margin-left: 100px;
     }
 
     .horiz-crop, .vert-crop {
         position: absolute;
         background-color: #031323;
-        transition: all 1s ease;
     }
 
     .horiz-crop {
@@ -87,21 +84,20 @@
     .horiz-crop-lg, .vert-crop-lg {
         position: absolute;
         background-color: #031323;
-        transition: all 1s ease;
     }
 
     .horiz-crop-lg {
         top: 100px;
         left: -8px;
         height: 600px;
-        width: 1436px;
+        width: 1082px;
     }
 
     .vert-crop-lg {
         top: -8px;
         left: 100px;
         height: 816px;
-        width: 1220px;
+        width: 866px;
     }
 
     .btn-start {
@@ -144,11 +140,14 @@
         height: 480px;
         width: 640px;
         position: absolute;
-        background-color: red;
+        /*background-color: red;*/
+        top: 160px;
+        left: 213px;
+        transform: scale(1.666);
     }
 
-    iframe {
+    /*iframe {
         width: 640px;
         height: 480px;
-    }
+    }*/
 </style>

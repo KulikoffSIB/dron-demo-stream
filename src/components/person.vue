@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="person-logo-wrap">
         <div class="person-wrap">
             <div class="flex-container-column" style="height: 100%">
                 <div class="flex-element-3">
@@ -102,6 +102,11 @@
 <style scoped>
     img {
         width: 100%;
+    }
+
+    .person-logo-wrap {
+        width: 402px;
+        margin-left: 150px;
     }
 
     .person-wrap {
