@@ -40,7 +40,7 @@
                 setTimeout(() => {
                     this.run = !this.run;
                     this.$emit('startDemo', this.run);
-                }, 40 * 1000)
+                }, 80 * 1000)
             }
         }
     }
