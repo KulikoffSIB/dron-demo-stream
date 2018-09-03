@@ -2,6 +2,9 @@
     <div v-bind:class="[run ? 'start-border-lg': 'start-border']">
         <div v-bind:class="[run ? 'horiz-crop-lg': 'horiz-crop']"></div>
         <div v-bind:class="[run ? 'vert-crop-lg': 'vert-crop']"></div>
+        <div class="video-stream" v-if="run">
+            <iframe src="http://127.0.0.1:8086/cam.mjpg" frameborder="0"></iframe>
+        </div>
         <template v-if="!run">
             <div class="btn-start" @click="start()">
                 СТАРТ
@@ -134,5 +137,13 @@
         width: 200px;
         font-family: 'Bender', sans-serif;
         font-size: 60px;
+    }
+
+    .video-stream {
+        z-index: 1000;
+        height: 480px;
+        width: 640px;
+        position: absolute;
+        background-color: red;
     }
 </style>
