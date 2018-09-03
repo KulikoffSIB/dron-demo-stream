@@ -3,7 +3,7 @@
         <div v-bind:class="[run ? 'horiz-crop-lg': 'horiz-crop']"></div>
         <div v-bind:class="[run ? 'vert-crop-lg': 'vert-crop']"></div>
         <div class="video-stream" v-if="run">
-            <!--<iframe src="http://127.0.0.1:8086/cam.mjpg" frameborder="0"></iframe>-->
+            <iframe src="http://127.0.0.1:8086/cam.mjpg" frameborder="0"></iframe>
         </div>
         <template v-if="!run">
             <div class="btn-start" @click="start()">
