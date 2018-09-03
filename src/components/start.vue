@@ -146,4 +146,9 @@
         position: absolute;
         background-color: red;
     }
+
+    iframe {
+        width: 640px;
+        height: 480px;
+    }
 </style>
