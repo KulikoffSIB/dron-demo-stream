@@ -146,8 +146,8 @@
         transform: scale(1.666);
     }
 
-    /*iframe {
+    iframe {
         width: 640px;
         height: 480px;
-    }*/
+    }
 </style>
