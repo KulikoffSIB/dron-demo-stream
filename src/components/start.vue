@@ -17,6 +17,8 @@
 </template>
 
 <script>
+    import {config} from "../dron-config";
+
     export default {
         name: "start",
         data: function () {
@@ -28,7 +30,7 @@
             start(event) {
                 if (event) event.preventDefault();
 
-                window.fetch('http://clever:7777/start', {
+                window.fetch('http://' + config.ip + ':7777/start', {
                     method: 'get'
                 }).then(res => {
                     console.log(res);
