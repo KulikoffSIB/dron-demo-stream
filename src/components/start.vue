@@ -30,8 +30,8 @@
             start(event) {
                 if (event) event.preventDefault();
 
-                window.fetch('http://' + config.ip + ':7777/start', {
-                    method: 'get'
+                window.fetch('http://' + config.ip + ':7777/start?height=' + config.flyHeight + '&duration=' + config.flyDuration, {
+                    method: 'post'
                 }).then(res => {
                     console.log(res);
                 });
@@ -42,7 +42,7 @@
                 setTimeout(() => {
                     this.run = !this.run;
                     this.$emit('startDemo', this.run);
-                }, 80 * 1000)
+                }, config.flyDuration * 1000)
             }
         }
     }
@@ -59,7 +59,7 @@
     .start-border-lg {
         position: relative;
         height: 800px;
-        width: 1066px;
+        width: 1199px;
         border: 8px solid #FFD100;
         margin-left: 100px;
     }
@@ -92,14 +92,14 @@
         top: 100px;
         left: -8px;
         height: 600px;
-        width: 1082px;
+        width: 1215px;
     }
 
     .vert-crop-lg {
         top: -8px;
         left: 100px;
         height: 816px;
-        width: 866px;
+        width: 998px;
     }
 
     .btn-start {
@@ -138,18 +138,19 @@
     }
 
     .video-stream {
+        background-color: aliceblue;
         z-index: 1000;
         height: 480px;
-        width: 640px;
+        width: 720px;
         position: absolute;
         /*background-color: red;*/
         top: 160px;
-        left: 213px;
+        left: 239px;
         transform: scale(1.666);
     }
 
     iframe {
-        width: 640px;
+        width: 720px;
         height: 480px;
     }
 </style>
