@@ -47,11 +47,8 @@
             </div>
         </div>
         <div class="logo-wrap">
-            <div class="logo rosneft">
-                <img src="../../src/assets/RN.png" alt="ROSNEFT">
-            </div>
-            <div class="logo sibintek">
-                <img src="../../src/assets/SIB.png" alt="SIBINTEK">
+            <div>
+
             </div>
         </div>
     </div>
@@ -70,7 +67,8 @@
                 company: 'Нет данных',
                 post: 'Нет данных',
                 socket: null,
-                stompClient: null
+                stompClient: null,
+
             }
         },
         created() {
@@ -79,16 +77,11 @@
 
             this.stompClient.connect({}, () => {
                 this.stompClient.subscribe('/topic/message', (data) => {
-                    let personData = JSON.parse(data.body);
-                    let userData = JSON.parse(personData.userData);
 
-                    // this.inHelmet = personData.inHelmet;
-                    this.name = userData.name;
-                    this.lastName = userData.lastName;
-                    this.midName = userData.midName;
-                    this.company = userData.company;
-                    this.post = userData.post;
-                    this.$refs.photo.src = userData.imgURL;
+                    let parsedArray = JSON.parse(data.body);
+                    parsedArray.forEach((person)=>{
+                        console.log(JSON.parse(person.userData))
+                    });
                 })
             })
         },
