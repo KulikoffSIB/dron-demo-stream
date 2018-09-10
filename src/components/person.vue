@@ -54,8 +54,10 @@
 
             this.stompClient.connect({}, () => {
                 this.stompClient.subscribe('/topic/message', (data) => {
+                    this.detectedPersons = [];
 
                     let parsedArray = JSON.parse(data.body);
+
                     parsedArray.forEach((person) => {
                         this.detectedPersons.push(JSON.parse(person.userData));
                     });
