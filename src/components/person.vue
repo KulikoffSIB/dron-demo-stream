@@ -43,6 +43,8 @@
         },
         methods: {
             stopStream() {
+                this.$emit('stopDemo', false);
+
                 window.fetch('http://' + config.ip + ':7777/stop', {
                     method: 'post'
                 }).then(res => {

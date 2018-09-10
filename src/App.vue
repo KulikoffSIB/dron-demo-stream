@@ -16,7 +16,7 @@
                 <start @startDemo="startDemo"></start>
             </div>
             <div class="flex-element-1" v-if="run" style="align-self: center;">
-                <person></person>
+                <person @stopDemo="stopDemo"></person>
             </div>
         </div>
     </div>
@@ -36,6 +36,9 @@
         },
         methods: {
             startDemo: function (run) {
+                this.run = run;
+            },
+            stopDemo: function (run) {
                 this.run = run;
             }
         },
