@@ -1,5 +1,6 @@
 export const config = {
     ip: 'ip',
-    flyHeight: 2,   // метры
-    flyDuration: 120 // секунды
+    flyHeight: 2,                                                                            // метры
+    flyDuration: 120,                                                                        // секунды
+    speechText: 'Человек в каске, голова в безопасности, макушка прикрыта, щёки открыты.'    // речь при событии 'каска'
 };

@@ -36,7 +36,9 @@
             return {
                 socket: null,
                 stompClient: null,
-                detectedPersons: []
+                detectedPersons: [],
+                repeatSpeech: true,
+                speechEngine: null
             }
         },
         methods: {
@@ -49,16 +51,32 @@
             }
         },
         created() {
+            this.speechEngine = new SpeechSynthesisUtterance();
+            this.speechEngine.text = config.speechText;
+            this.speechEngine.lang = 'ru-RU';
+            this.speechEngine.rate = 1;
+
             this.socket = new SockJS('http://localhost:9000/stomp');
             this.stompClient = Stomp.over(this.socket);
 
             this.stompClient.connect({}, () => {
-                this.stompClient.subscribe('/topic/message', (data) => {
+                this.stompClient.subscribe('/topic/message', (res) => {
                     this.detectedPersons = [];
 
-                    let parsedArray = JSON.parse(data.body);
+                    let data = JSON.parse(res.body);
+                    if (data.inHelmet && this.repeatSpeech) {
 
-                    parsedArray.forEach((person) => {
+                        this.repeatSpeech = false;
+                        setTimeout(() => {
+                            this.repeatSpeech = true;
+                        }, 5000);
+
+                        speechSynthesis.speak(this.speechEngine)
+
+
+                    }
+
+                    data.detectedPersons.forEach((person) => {
                         this.detectedPersons.push(JSON.parse(person.userData));
                     });
                 })
