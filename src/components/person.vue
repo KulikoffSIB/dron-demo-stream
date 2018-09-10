@@ -65,15 +65,12 @@
 
                     let data = JSON.parse(res.body);
                     if (data.inHelmet && this.repeatSpeech) {
-
                         this.repeatSpeech = false;
                         setTimeout(() => {
                             this.repeatSpeech = true;
-                        }, 5000);
+                        }, config.speechTimeout * 1000);
 
                         speechSynthesis.speak(this.speechEngine)
-
-
                     }
 
                     data.detectedPersons.forEach((person) => {
