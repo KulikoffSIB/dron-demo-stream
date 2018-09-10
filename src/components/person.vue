@@ -44,6 +44,7 @@
         methods: {
             stopStream() {
                 this.$emit('stopDemo', false);
+                speechSynthesis.cancel();
 
                 window.fetch('http://' + config.ip + ':7777/stop', {
                     method: 'post'
