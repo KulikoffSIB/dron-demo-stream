@@ -39,10 +39,12 @@
                 this.run = !this.run;
                 this.$emit('startDemo', this.run);
 
-                setTimeout(() => {
+
+                // таймаут стрима
+                /*setTimeout(() => {
                     this.run = !this.run;
                     this.$emit('startDemo', this.run);
-                }, config.flyDuration * 1000)
+                }, config.flyDuration * 1000)*/
             }
         }
     }
